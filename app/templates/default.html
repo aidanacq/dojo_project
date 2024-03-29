@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+    <div style="margin:auto;width:400px;text-align:center;">
+        <h1>Fantasy Baseball Statistics</h1>
+    </div>
+
+    <div class="mainalt">
+        <div id="login">
+            <h2 class="h2">Login</h2>
+            <form action="/logprocess" method="POST">
+                <label for="email" >Email:</label><br>
+                <input class="inputs" type="email" name="email"><br>
+                <label for="password" >Password:</label><br>
+                <input class="inputs" type="text" name="password"><br>
+                <input class="button" type="submit" value="Login">
+            </form>
+        </div>
+
+        <div id="register">
+            <h2 class="h2">Register</h2>
+            <form action="/regprocess" method="POST">
+                <label for="fname">First Name:</label><br>
+                <input class="inputs" type="text" name="fname" value="{{fname}}"><br>
+                <label for="lname">Last Name:</label><br>
+                <input class="inputs" type="text" name="lname" value="{{lname}}"><br>
+                <label for="email" >Email:</label><br>
+                <input class="inputs" type="email" name="email" value="{{email}}"><br>
+                <label for="password" >Password:</label><br>
+                <input class="inputs" type="text" name="password"><br>
+                <label for="confpassword" >Confirm Password:</label><br>
+                <input class="inputs" type="text" name="confpassword"><br>
+                <input class="button" type="submit" value="Register">
+            </form>
+        </div>
+    </div>
+    <div class="flashbox">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

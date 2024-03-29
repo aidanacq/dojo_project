@@ -1,0 +1,133 @@
+body {
+    background-color: rgb(69, 69, 69);
+}
+
+.flashbox {
+    color:rgb(131, 0, 0);
+    height:300px;
+    text-align: center;
+    width:600px;
+}
+
+.inputs {
+    margin-bottom:10px;
+    width: 200px
+}
+
+select {
+    width:208px;
+    margin-bottom:10px;
+}
+
+.button {
+    background-color: rgb(0, 128, 255);
+    margin:0px;
+}
+
+.topbar, .mainalt, #players, .topright, .topleft {
+    display:flex;
+    flex-direction: row;
+}
+
+.topbar, #players, .mainalt, .bottombuttons, .main, .title, .flashbox {
+    margin:auto
+}
+
+.topright, .topleft {
+    width:200px;
+}
+
+.topright {
+    margin-right:-1000px;
+}
+
+#login, #pitchers {
+    margin-left:100px
+}
+
+#register, #batters {
+    margin-left:200px
+}
+
+.topbar {
+    width:1000px;
+    height:70px;
+    margin-bottom:50px;
+    margin-top:20px;
+    text-align:center;
+}
+
+.title {
+    width:400px;
+    margin-left:100px;
+    margin-right:155px;
+}
+
+.main, .mainalt {
+    border:2px solid black;
+    width:800px;
+    height:400px;
+    background-color: rgb(171, 171, 171);
+    overflow-y:auto;
+}
+
+.row {
+    font-size:150%;
+    display:flex;
+    flex-direction: row;
+}
+
+.teamname, .champs, .winloss {
+    width:33%;
+    text-align:center
+}
+
+.form {
+    margin:auto;
+    width:250px;
+    margin-top:5px;
+}
+
+#pitchers, #batters {
+    width:200px;
+    text-align:center;
+    font-size:125%;
+}
+
+h2 {
+    margin:auto;
+    width:250px;
+    margin-top:15px;
+    text-align:center
+}
+
+.h2 {
+    width:200px
+}
+
+.rowalt, .bottombuttons {
+    display:flex;
+    flex-direction: row;
+}
+
+.cell {
+    width:55px;
+    margin-left:10px;
+    text-align: center;
+}
+
+.bottombuttons {
+    width:165px
+}
+
+#announce {
+    text-align:center;
+    font-size:150%;
+    margin-top:50px
+}
+
+#score {
+    text-align:center;
+    font-size:250%;
+    margin-top:30px
+}

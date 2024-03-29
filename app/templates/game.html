@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+    <div class="topbar">
+        <div class="topleft">
+            <a href="/teams"><button class="button">Home</button></a>
+        </div>
+        <div class="title">
+            <h1>Fantasy Baseball Statistics</h1>
+        </div>
+        <div class="topright">
+            <a href="/logout"><button class="button">Logout</button></a>
+        </div>
+    </div>
+    <div class="main">
+        <form class="form" style="margin-top:30px;" action="/gameprocess" method="POST">
+            <label for="team1">Team #1:</label><br>
+            <select name="team1">
+                {% for team in teams %}
+                    <option value="{{team.id}}">{{team.location}} {{team.name}}</option>
+                {% endfor %}
+            </select><br>
+            <label for="team2">Team #2:</label><br>
+            <select name="team2">
+                {% for team in teams %}
+                    <option value="{{team.id}}">{{team.location}} {{team.name}}</option>
+                {% endfor %}
+            </select><br>
+            <input type="checkbox" name="ws" value="checked">
+            <label for="ws">World Series Game</label><br><br>
+            <input class="button" type="submit" value="Submit">
+        </form>
+    </div>
+    <div class="flashbox">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

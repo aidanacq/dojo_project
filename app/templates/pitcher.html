@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+    <div class="topbar">
+        <div class="topleft">
+            <a href="/teams"><button class="button">Home</button></a>
+            <a href="/teams/{{id}}"><button class="button">Back</button></a><br>
+        </div>
+        <div class="title">
+            <h1>Fantasy Baseball Statistics</h1>
+        </div>
+        <div class="topright">
+            <a href="/game"><button class="button">Play Game</button></a>
+            <a href="/logout"><button class="button">Logout</button></a>
+        </div>
+    </div>
+    <div class="main">
+        <h2>{{player.fname}} {{player.lname}}</h2><br>
+        <div class="rowalt">
+            <div class="cell">Year</div> | <div class="cell">Games</div> / <div class="cell">IP</div> / <div class="cell">Wins</div> / <div class="cell">Losses</div> / <div class="cell">Starts</div> / <div class="cell">CG</div> / <div class="cell">ERA</div> / <div class="cell">ER</div> / <div class="cell">Runs</div> / <div class="cell">K</div> / <div class="cell">Walks</div> / <div class="cell">HBP</div> / <div class="cell">Hits</div> / <div class="cell">HR</div><br>
+        </div>
+        {% for pitcher in pitchers %}
+            <div class="rowalt">
+                <div class="cell">{{pitcher.year}}</div> | <div class="cell">{{pitcher.games}}</div> / <div class="cell">{{pitcher.ip}}</div> / <div class="cell">{{pitcher.wins}}</div> / <div class="cell">{{pitcher.losses}}</div> / <div class="cell">{{pitcher.gs}}</div> / <div class="cell">{{pitcher.cg}}</div> / <div class="cell">{{pitcher.era}}</div> / <div class="cell">{{pitcher.er}}</div> / <div class="cell">{{pitcher.runs}}</div> / <div class="cell">{{pitcher.so}}</div> / <div class="cell">{{pitcher.bb}}</div> / <div class="cell">{{pitcher.hbp}}</div> / <div class="cell">{{pitcher.hits}}</div> / <div class="cell">{{pitcher.homeruns}}</div><br>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="bottombuttons">
+        <a href="/teams/{{id}}/player_{{pitchers[0].player_id}}/edit"><button class="button">Edit</button></a><br>
+        <a href="/teams/{{id}}/player_{{pitchers[0].player_id}}/newyear"><button class="button">Add Year</button></a><br>
+        <a href="/teams/{{id}}/player_{{pitchers[0].player_id}}/delete"><button class="button">Delete</button></a><br>
+    </div>
+</body>
+</html>

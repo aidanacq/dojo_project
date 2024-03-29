@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+    <div class="topbar">
+        <div class="topleft">
+            <a href="/teams"><button class="button">Home</button></a>
+        </div>
+        <div class="title">
+            <h1>Fantasy Baseball Statistics</h1>
+        </div>
+        <div class="topright">
+            <a href="/game"><button class="button">Play Game</button></a>
+            <a href="/logout"><button class="button">Logout</button></a>
+        </div>
+    </div>
+    <div class="main">
+        <form class="form" style="margin-top:30px;" action="/teams/{{player.team_id}}/player_{{player.id}}/editprocess" method="POST">
+            <label for="fname">First Name:</label><br>
+            <input class="inputs" type="text" name="fname" value="{{player.fname}}"><br>
+            <label for="lname">Last Name:</label><br>
+            <input class="inputs" type="text" name="lname" value="{{player.lname}}"><br>
+            <label for="number">Number:</label><br>
+            <input class="inputs" type="text" name="number" value="{{player.number}}"><br>
+            <label for="team">Team:</label><br>
+            <select class="inputs" name="team">
+                {% for team in teams %}
+                    {% if team.id == player.team_id %}
+                        <option value="{{team.id}}" selected>{{team.location}} {{team.name}}</option>
+                    {% else %}
+                        <option value="{{team.id}}">{{team.location}} {{team.name}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select><br>
+            <input class="button" type="submit" value="Submit">
+        </form>
+    </div>
+    <div class="flashbox">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+    <div class="topbar">
+        <div class="topleft">
+            <a href="/teams"><button class="button">Home</button></a>
+        </div>
+        <div class="title">
+            <h1>Fantasy Baseball Statistics</h1>
+        </div>
+        <div class="topright">
+            <a href="/game"><button class="button">Play Game</button></a>
+            <a href="/logout"><button class="button">Logout</button></a>
+        </div>
+    </div>
+    <div class="main">
+        <form class="form" style="margin-top:50px;" action="/newteamprocess" method="POST">
+            <label for="name">Name:</label><br>
+            <input class="inputs" type="text" name="name" value="{{name}}"><br>
+            <label for="location">Location:</label><br>
+            <input class="inputs" type="text" name="location" value="{{location}}"><br>
+            <input class="button" type="submit" value="Submit">
+        </form>
+    </div>
+    <div class="flashbox">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+</body>
+</html>

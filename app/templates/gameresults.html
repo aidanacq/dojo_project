@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+    <div class="topbar">
+        <div class="topleft">
+            <a href="/teams"><button class="button">Home</button></a>
+        </div>
+        <div class="title">
+            <h1>Fantasy Baseball Statistics</h1>
+        </div>
+        <div class="topright">
+            <a href="/game"><button class="button">Play Again</button></a>
+            <a href="/logout"><button class="button">Logout</button></a>
+        </div>
+    </div>
+    <div class="main">
+        <div id="announce">
+            <a href="/teams/{{winning_team.id}}">{{winning_team.location}} {{winning_team.name}}</a><br> beat <br><a href="/teams/{{losing_team.id}}">{{losing_team.location}} {{losing_team.name}}</a><br>
+        </div>
+        <div id="score">
+            {{winner_score}}-{{loser_score}}
+        </div>
+    </div>
+</body>
+</html>

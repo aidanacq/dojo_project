@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style.css') }}">
+</head>
+<body>
+    <div class="topbar">
+        <div class="topleft">
+            <a href="/newplayer"><button class="button">New Player</button></a>
+            <a href="/newteam"><button class="button">New Team</button></a>
+        </div>
+        <div class="title">
+            <h1>Fantasy Baseball Statistics</h1>
+        </div>
+        <div class="topright">
+            <a href="/game"><button class="button">Play Game</button></a>
+            <a href="/logout"><button class="button">Logout</button></a>
+        </div>
+    </div>
+    <div class="main">
+        <div class="row">
+            <span class="teamname">Team Name:</span>
+            <span class="champs">Championship Wins:</span>
+            <span class="winloss">Win/Loss:</span>
+        </div><br>
+        {% for team in teams %}
+            <div class="row">
+                <span class="teamname"><a href="teams/{{team.id}}">{{team.location}} {{team.name}}</a></span>
+                <span class="champs">{{team.champs}}</span>
+                <span class="winloss">{{team.winloss}}</span>
+            </div><br>
+        {% endfor %}
+    </div>
+</body>
+</html>
